@@ -1,0 +1,30 @@
+{
+  "name": "Calculator",
+  "version": "1.0.0",
+  "private": true,
+  "fitbit": {
+    "appUUID": "2bcb9c0f-493b-4ec5-9fe0-07039a28ffa1",
+    "appType": "app",
+    "appDisplayName": "Calculator",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#8bc34a",
+    "requestedPermissions": [],
+    "buildTargets": [
+      "hera",
+      "rhea"
+    ],
+    "i18n": {},
+    "defaultLanguage": "en-US",
+    "enableProposedAPI": true
+  },
+  "scripts": {
+    "build": "fitbit-build",
+    "debug": "fitbit"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~7.1.0-pre.0",
+    "@fitbit/sdk-build-targets": "cmengler/fitbit-sdk-build-targets",
+    "@fitbit/sdk-cli": "~1.8.0-pre.10",
+    "fitbit-sdk-types": "^8.0.3"
+  }
+}

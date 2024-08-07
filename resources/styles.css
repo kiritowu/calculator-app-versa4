@@ -1,0 +1,51 @@
+.screen {
+  viewport-fill: black;
+}
+
+.application-fill {
+  fill: white;
+}
+
+.primary-fill {
+  fill: "#f69005";
+}
+
+.secondary-fill {
+  fill: "#313131";
+}
+
+#numbers {
+  fill: white;
+  font-size: 36;
+  font-family: System-Regular;
+  font-weight: bold;
+  text-anchor: end;
+  text-length: 32;
+}
+
+#back {
+  x: 80%;
+  y: -10;
+}
+
+.back-button #image {
+  href: "left-arrow.png";
+}
+
+.row {
+  width: 100%;
+  height: 20%;
+}
+
+.btn {
+  width: 25%;
+  height: 100%;
+}
+
+.btn #text {
+  font-size: 16;
+  font-family: System-Regular;
+  text-length: 2;
+}
+
+

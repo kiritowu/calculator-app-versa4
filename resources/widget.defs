@@ -1,0 +1,18 @@
+<svg>
+  <defs>
+    <link rel="import" href="/mnt/sysassets/system_widget.defs" />
+    <link rel="import" href="/mnt/sysassets/widgets/icon_button.defs" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <symbol id="text-button-rounded" pointer-events="visible">
+      <section x="5%" y="5%" width="90%" height="90%">
+        <rect x="25%" y="0" width="50%" height="99%" fill="inherit" rx="auto" />
+        <circle cx="31%" cy="50%" r="50%" fill="inherit" />
+        <circle cx="69%" cy="50%" r="50%" fill="inherit" />
+      </section>
+      <text id="text" class="center-text" x="50%-1" y="50%+10" fill="white"/>
+      <rect class="touch-area" />
+    </symbol>
+
+  </defs>
+</svg>
