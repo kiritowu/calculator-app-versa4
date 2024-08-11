@@ -4,100 +4,95 @@ import { id2Symbol, opsMethods } from "./enums";
 // Create the root selector for the view...
 const $ = $at('#calculator-screen');
 
+function resolveOps(rightNum, stage) {
+    // Recursion to evaluate equation
+    if (stage === undefined) {
+        return rightNum;
+    }
+    const { num, ops, nextStage } = stage;
+    const leftNum = resolveOps(num, nextStage);
+    return ops(leftNum, rightNum);
+}
+
 export class CalculatorScreen extends View {
     // Specify the root view element.
     // When set, it will be used to show/hide the view on mount and unmount.
     // Root view element used to show/hide the view.
     el = $(); // Extract #calculator-screen element.
 
-    // Ad-hoc $-queries must be avoided.
-    // You've got dumb 120MHz MCU with no JIT in VM, thus everything you do is expensive.
-    // Put all of your elements here, like this:
-
-    // otherEl = $( '#other-el-id' );
-    numberConsole = $('#numbers');
+    numberEl = $('#numbers');
     stage = undefined;
+
+    appendSymbolHandler = (id) => {
+        console.log("appending " + id);
+        const handler = () => {
+            console.log("click " + id);
+            for (let opsMethod of Object.keys(opsMethods)) {
+                // Fallback to use for of since includes is not available
+                if (id === opsMethod) {
+                    // Stage numeric operation
+                    this.stage = { num: parseFloat(this.numberEl.text), ops: opsMethods[id], nextStage: this.stage };
+                    this.numberEl.text = id2Symbol[id];
+                    return;
+                }
+            }
+            // Append number symbol
+            this.numberEl.text += id2Symbol[id];
+        }
+        return handler
+    }
+
+    equalHandler = () => {
+        console.log("click equal");
+        const result = resolveOps(parseFloat(this.numberEl.text.slice(1)), this.stage);
+        this.numberEl.text = result % 1 === 0 ? result : result.toPrecision(8);
+        this.stage = undefined;
+    }
+
+    backspaceHandler = () => {
+        // Remove last character in numberConsole
+        console.log("click backspace");
+        this.numberEl.text = this.numberEl.text.slice(0, -1);
+    }
+
+    clearHandler = () => {
+        // Clear number console and stage
+        console.log("click clear");
+        this.numberEl.text = "";
+        this.stage = undefined;
+    }
 
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
         // Mount event listeners
         Object.keys(id2Symbol).forEach(id => {
             // TODO: vibrate and change opacity on mousedown
-            $(`#${id}`).addEventListener("click", this._appendSymbolHandler);
+            $(`#${id}`).addEventListener("click", this.appendSymbolHandler(id));
         })
-        $("#equal").addEventListener("click", this._equalHandler);
-        $("#back").addEventListener("click", this._backspaceHandler);
-        $("#clear").addEventListener("click", this._clearHandler);
+        $("#equal").addEventListener("click", this.equalHandler);
+        $("#back").addEventListener("click", this.backspaceHandler);
+        $("#clear").addEventListener("click", this.clearHandler);
     }
 
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
         // Unmount local props
         this.stage = null;
-        this.numberConsole.text = "";
+        this.numberEl.text = "";
 
         // Unmount event listeners
         Object.keys(id2Symbol).forEach(id => {
             // TODO: vibrate and change opacity on mousedown
-            $(`#${id}`).removeEventListener("click", this._appendSymbolHandler);
+            $(`#${id}`).removeEventListener("click", this.appendSymbolHandler(id));
         })
-        $("#equal").removeEventListener("click", this._equalHandler);
-        $("#back").removeEventListener("click", this._backspaceHandler);
-        $("#clear").removeEventListener("click", this._clearHandler);
+        $("#equal").removeEventListener("click", this.equalHandler);
+        $("#back").removeEventListener("click", this.backspaceHandler);
+        $("#clear").removeEventListener("click", this.clearHandler);
     }
-
     // Custom UI update logic, executed on `view.render()`.
     onRender() {
         // TODO: put DOM manipulations here...
         // Call this.render() to update UI.
     }
-
-    _resolveOps(rightNum, stage) {
-        // Recursion to evaluate equation
-        if (stage === undefined) {
-            return rightNum;
-        }
-        const { num, ops, nextStage } = stage;
-        const leftNum = resolveOps(num, nextStage);
-        return ops(leftNum, rightNum);
-    }
-
-    _appendSymbolHandler(id) {
-        console.log("appending " + id);
-        const handler = (event) => {
-            for (let opsMethod of Object.keys(opsMethods)) {
-                // Fallback to use for of since includes is not available
-                if (id === opsMethod) {
-                    // Stage numeric operation
-                    this.stage = { num: parseFloat(this.numberConsole.text), ops: opsMethods[id], nextStage: this.stage };
-                    this.numberConsole.text = id2Symbol[id];
-                    return;
-                }
-            }
-            // Append number symbol
-            this.numberConsole.text += id2Symbol[id];
-        }
-        return handler
-    }
-
-
-    _equalHandler(event) {
-        console.log("click equal");
-        const result = this._resolveOps(parsefloat(this.numberConsole.text.slice(1)), this.stage);
-        this.numberConsole.text = result % 1 === 0 ? result : result.toprecision(8);
-        this.stage = undefined;
-    }
-
-
-    _backspaceHandler(event) {
-        // Remove last character in numberConsole
-        this.numberConsole.text = this.numberConsole.text.slice(0, -1);
-    }
-
-    _clearHandler(event) {
-        // Clear number console and stage
-        this.numberConsole.text = "";
-        this.stage = undefined;
-    }
-
 }
+
