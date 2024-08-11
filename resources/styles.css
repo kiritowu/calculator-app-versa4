@@ -14,10 +14,13 @@
   fill: "#313131";
 }
 
-#numbers {
+text {
   fill: white;
-  font-size: 36;
   font-family: System-Regular;
+}
+
+#numbers {
+  font-size: 36;
   font-weight: bold;
   text-anchor: end;
   text-length: 32;
@@ -44,7 +47,6 @@
 
 .btn #text {
   font-size: 16;
-  font-family: System-Regular;
   text-length: 2;
 }
 
