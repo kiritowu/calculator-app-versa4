@@ -1,4 +1,4 @@
-import { View, $at } from '../view'
+import { Application, View, $at } from '../view'
 import { id2Symbol, opsMethods } from "../enums";
 
 // Create the root selector for the view...
@@ -62,6 +62,11 @@ export class CalculatorScreen extends View {
         this.stage = undefined;
     }
 
+    menuHandler = () => {
+        // Change screen to menu
+        Application.switchTo('MenuScreen');
+    }
+
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
         // Mount event listeners
@@ -72,6 +77,7 @@ export class CalculatorScreen extends View {
         $("#equal").addEventListener("click", this.equalHandler);
         $("#back").addEventListener("click", this.backspaceHandler);
         $("#clear").addEventListener("click", this.clearHandler);
+        $("#convert").addEventListener("click", this.menuHandler);
     }
 
     // Lifecycle hook executed on `view.unmount()`.
@@ -88,6 +94,7 @@ export class CalculatorScreen extends View {
         $("#equal").removeEventListener("click", this.equalHandler);
         $("#back").removeEventListener("click", this.backspaceHandler);
         $("#clear").removeEventListener("click", this.clearHandler);
+        $("#convert").removeEventListener("click", this.menuHandler);
     }
     // Custom UI update logic, executed on `view.render()`.
     onRender() {
