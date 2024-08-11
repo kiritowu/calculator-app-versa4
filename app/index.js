@@ -1,10 +1,10 @@
 import document from "document";
 import { Application } from './view'
-import { CalculatorScreen } from './calculatorScreen'
+import screens from './screens'
 
 class MultiScreenApp extends Application {
     // List all screens
-    screens = { CalculatorScreen }
+    screens = screens
 
     // "down" key handler
     onKeyDown() {

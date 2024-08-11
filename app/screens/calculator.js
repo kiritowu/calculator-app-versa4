@@ -1,5 +1,5 @@
-import { View, $at } from './view'
-import { id2Symbol, opsMethods } from "./enums";
+import { View, $at } from '../view'
+import { id2Symbol, opsMethods } from "../enums";
 
 // Create the root selector for the view...
 const $ = $at('#calculator-screen');
@@ -13,8 +13,6 @@ export class CalculatorScreen extends View {
     // Ad-hoc $-queries must be avoided.
     // You've got dumb 120MHz MCU with no JIT in VM, thus everything you do is expensive.
     // Put all of your elements here, like this:
-
-    // otherEl = $( '#other-el-id' );
     numberConsole = $('#numbers');
     stage = undefined;
 
@@ -52,6 +50,7 @@ export class CalculatorScreen extends View {
         // Call this.render() to update UI.
     }
 
+    // Private Methods for calculator logic
     _resolveOps(rightNum, stage) {
         // Recursion to evaluate equation
         if (stage === undefined) {
@@ -62,6 +61,7 @@ export class CalculatorScreen extends View {
         return ops(leftNum, rightNum);
     }
 
+    // Event Handlers
     _appendSymbolHandler(id) {
         console.log("appending " + id);
         const handler = (event) => {
@@ -80,9 +80,8 @@ export class CalculatorScreen extends View {
         return handler
     }
 
-
     _equalHandler(event) {
-        console.log("click equal");
+        // Calculate staged equations and write the result
         const result = this._resolveOps(parsefloat(this.numberConsole.text.slice(1)), this.stage);
         this.numberConsole.text = result % 1 === 0 ? result : result.toprecision(8);
         this.stage = undefined;
@@ -99,5 +98,4 @@ export class CalculatorScreen extends View {
         this.numberConsole.text = "";
         this.stage = undefined;
     }
-
 }
