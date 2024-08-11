@@ -2,6 +2,7 @@
 
 A simple Calculator app is built based on an [unofficial approach](https://github.com/cmengler/fitbit-app-versa4) for sideloading a 3rd-party application to Fitbit Versa 4 and Sense 2 devices.
 
+This app is built using [Ionic Views framwork](https://github.com/gaperton/ionic-views) by [gaperton](https://twitter.com/gaperton).
 
 ## Quick Start
 
