@@ -1,6 +1,6 @@
 <svg id="menu-screen" display="none" class="screen">
 <use id="menu-button-currency" href="#icon-button" class="extra-large-button primary-fill currency-button" x="20" y="30"/>
-<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" x="192" y="30"/>
-<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" x="20" y="192"/>
-<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" x="192" y="192"/>
+<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" pointer-events="none" x="192" y="30"/>
+<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" pointer-events="none" x="20" y="192"/>
+<use id="menu-button-muted" href="#icon-button" class="extra-large-button muted-fill muted-button" pointer-events="none" x="192" y="192"/>
 </svg>
