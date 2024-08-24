@@ -1,3 +1,35 @@
 <svg id="currency-screen" display="none" class="screen">
-<text>This is my currency screen.</text>
+  <svg id="index-view">
+    <use id="menu-btn" x="5%" y="5%" href="#icon-button" class="medium-button muted-fill menu-button" />
+    <section x="5%" y="20%" height="50%" width="100%">
+      <section class="primary-fill" height="50%">
+        <text id="from-currency" y="0" x="80%" font-size="28" text-anchor="end" fill="inherit">USD</text>
+        <text id="from-number" y="$+15" x="80%" font-size="58" text-anchor="end" fill="inherit">1.00</text>
+      </section>
+      <section class="application-fill" y="$+15" height="50%">
+        <text id="to-currency" y="0" x="80%" font-size="28" text-anchor="end" fill="inherit">SGD</text>
+        <text id="to-number" y="$+15" x="80%" font-size="58" text-anchor="end" fill="inherit">1.00</text>
+      </section>
+    </section>
+    <section x="5%" y="75%" class="row">
+      <use id="setting-btn" x="0" y="0" width="20%" href="#small-button-rect" class="secondary-fill">
+        <set href="#image" attributeName="href" to="icons/setting-svgrepo-com.png" />
+      </use>
+      <use id="numpad-btn" x="$+10" y="0" width="20%" href="#small-button-rect" class="primary-fill">
+        <set href="#image" attributeName="href" to="icons/calculator-svgrepo-com.png" />
+      </use>
+      <use id="reset-btn" x="$+10" y="0" width="40%" href="#small-button-rect" class="secondary-fill">
+        <set href="#text" attributeName="text-buffer" to="Reset" />
+      </use>
+    </section>
+  </svg>
+  
+  <svg id="currency-view" display="none">
+  <text>This is my currency selector.</text>
+  </svg>
+  
+  <svg id="numpad-view" display="none">
+  <text>This is my number pad.</text>
+  </svg>
+
 </svg>

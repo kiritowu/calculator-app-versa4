@@ -14,5 +14,12 @@
       <rect class="touch-area" />
     </symbol>
 
+    <symbol id="small-button-rect" pointer-events="visible">
+      <rect x="0" y="0" width="100%" height="100%" fill="inherit" />
+      <image id="image" x="10" y="10" width="48" height="48" />
+      <text id="text" font-size="28" class="center-text" x="50%" y="50%+10" fill="white"/>
+      <rect class="touch-area" />
+    </symbol>
+
   </defs>
 </svg>

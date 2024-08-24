@@ -43,6 +43,10 @@ text {
   href: "icons/currency.png";
 }
 
+.menu-button #image {
+  href: "icons/menu-svgrepo-com.png";
+}
+
 .row {
   width: 100%;
   height: 20%;
