@@ -1,4 +1,4 @@
-import { View, $at } from '../view'
+import { Application, View, $at } from '../view'
 
 // Create the root selector for the view...
 const $ = $at('#menu-screen');
@@ -8,28 +8,25 @@ export class MenuScreen extends View {
     // When set, it will be used to show/hide the view on mount and unmount.
     el = $();
 
-    // Ad-hoc $-queries must be avoided.
-    // You've got dumb 120MHz MCU with no JIT in VM, thus everything you do is expensive.
-    // Put all of your elements here, like this:
+    currencyButtonEl = $('#menu-button-currency');
+    mutedButtonEls = $('.muted-button');
 
-    // otherEl = $( '#other-el-id' );
-    // elementsArray = $( '.other-el-class' );
+    convCurrencyHandler = () => {
+        // Change screen to currency conversion
+        Application.switchTo('ConvCurrencyScreen');
+    }
 
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
-        // TODO: insert subviews...
-        // TODO: subscribe for events...
+        this.currencyButtonEl.addEventListener("click", this.convCurrencyHandler);
     }
 
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
-        // TODO: unsubscribe from events...
-        this.trash = null;
+        this.currencyButtonEl.removeEventListener("click", this.convCurrencyHandler);
     }
 
     // Custom UI update logic, executed on `view.render()`.
     onRender() {
-        // TODO: put DOM manipulations here...
-        // Call this.render() to update UI.
     }
 }
