@@ -6,7 +6,7 @@
     "appUUID": "2bcb9c0f-493b-4ec5-9fe0-07039a28ffa1",
     "appType": "app",
     "appDisplayName": "Calculator",
-    "iconFile": "resources/icon.png",
+    "iconFile": "resources/icons/icon.png",
     "wipeColor": "#8bc34a",
     "requestedPermissions": [],
     "buildTargets": [

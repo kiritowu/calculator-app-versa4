@@ -36,11 +36,11 @@ text {
 }
 
 .back-button #image {
-  href: "left-arrow.png";
+  href: "icons/left-arrow.png";
 }
 
 .currency-button #image {
-  href: "currency.png";
+  href: "icons/currency.png";
 }
 
 .row {
