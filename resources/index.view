@@ -1,4 +1,5 @@
 <svg>
   <link rel="import" href="views/calculator.view" />
   <link rel="import" href="views/menu.view" />
+  <link rel="import" href="views/currency.view" />
 </svg>
