@@ -14,6 +14,10 @@
   fill: "#313131";
 }
 
+.muted-fill {
+  fill: "#111111";
+}
+
 text {
   fill: white;
   font-family: System-Regular;
@@ -33,6 +37,10 @@ text {
 
 .back-button #image {
   href: "left-arrow.png";
+}
+
+.currency-button #image {
+  href: "currency.png";
 }
 
 .row {
