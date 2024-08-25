@@ -1,8 +1,10 @@
 <svg>
   <defs>
+    <link rel="stylesheet" href="styles.css" />
     <link rel="import" href="/mnt/sysassets/system_widget.defs" />
     <link rel="import" href="/mnt/sysassets/widgets/icon_button.defs" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="import" href="/mnt/sysassets/widgets/baseview_widget.defs" />
+    <link rel="import" href="/mnt/sysassets/widgets/tumblerview_widget.defs" />
 
     <symbol id="text-button-rounded" pointer-events="visible">
       <section x="5%" y="5%" width="90%" height="90%">
