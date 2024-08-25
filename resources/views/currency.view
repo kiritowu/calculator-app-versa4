@@ -1,5 +1,5 @@
 <svg id="currency-screen" display="none" class="screen">
-  <svg id="index-view" display="none">
+  <svg id="index-view">
     <use id="menu-btn" x="5%" y="5%" href="#icon-button" class="medium-button muted-fill menu-button" />
     <section x="5%" y="20%" height="50%" width="100%">
       <section class="primary-fill" height="50%">
@@ -23,7 +23,7 @@
     </section>
   </svg>
   
-  <svg id="currency-view" class="primary-fill">
+  <svg id="currency-view" class="primary-fill" display="none">
     <g transform="translate(90,90) scale(0.5,0.5)">
       <use id="tumbler-from" href="#tumblerview">
         <use id="from-AED" href="#tumbler-item">
@@ -273,7 +273,59 @@
   </svg>
   
   <svg id="numpad-view" display="none">
-  <text>This is my number pad.</text>
+    <section x="0" y="10%" width="100%" height="16">
+      <text id="numbers" x="70%" y="15" width="80%" />
+      <use id="back" href="#icon-button" class="small-button application-fill back-button" />
+    </section>
+    <section x="13%" y="$" width="95%" height="90%-36">
+      <section class="row" x="0" y="20%">
+        <use id="seven" x="0" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="7" />
+        </use>t-
+        <use id="eight" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="8" />
+        </use>
+        <use id="nine" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="9" />
+        </use>
+      </section>
+
+      <section class="row" x="0" y="40%">
+        <use id="four" x="0" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="4" />
+        </use>
+        <use id="five" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="5" />
+        </use>
+        <use id="six" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="6" />
+        </use>
+      </section>
+
+      <section class="row" x="0" y="60%">
+        <use id="one" x="0" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="1" />
+        </use>
+        <use id="two" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="2" />
+        </use>
+        <use id="three" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="3" />
+        </use>
+      </section>
+
+      <section class="row" x="0" y="80%">
+        <use id="zero" x="0" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="0" />
+        </use>
+        <use id="dot" x="$" y="0" href="#text-button-rounded" class="btn text-button secondary-fill">
+          <set href="#text" attributeName="text-buffer" to="." />
+        </use>
+        <use id="equal" x="$" y="0" href="#text-button-rounded" class="btn text-button primary-fill">
+          <set href="#text" attributeName="text-buffer" to="=" />
+        </use>
+      </section>
+    <section>
   </svg>
 
 </svg>
