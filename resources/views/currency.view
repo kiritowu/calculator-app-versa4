@@ -4,10 +4,11 @@
     <section x="5%" y="20%" height="50%" width="100%">
       <section class="primary-fill" height="50%">
         <text id="from-currency" y="0" x="80%" font-size="28" text-anchor="end" fill="inherit">USD</text>
-        <text id="from-number" y="$+15" x="80%" font-size="58" text-anchor="end" fill="inherit">1.00</text>
+        <text id="from-number" y="$+15" x="80%" font-size="58" text-anchor="end" text-length="10" fill="inherit">1.00</text>
       </section>
-      <section class="application-fill" y="$+15" height="50%"> <text id="to-currency" y="0" x="80%" font-size="28" text-anchor="end" fill="inherit">SGD</text>
-        <text id="to-number" y="$+15" x="80%" font-size="58" text-anchor="end" fill="inherit">1.00</text>
+      <section class="application-fill" y="$+15" height="50%">
+        <text id="to-currency" y="0" x="80%" font-size="28" text-anchor="end" fill="inherit">SGD</text>
+        <text id="to-number" y="$+15" x="80%" font-size="58" text-anchor="end" text-length="10" fill="inherit">1.00</text>
       </section>
     </section>
     <section x="5%" y="75%" class="row">
@@ -27,106 +28,106 @@
     <g transform="translate(90,90) scale(0.5,0.5)">
       <use id="tumbler-from" href="#tumblerview">
           <use id="from-0" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="AED" />
+              <set href="value/text" attributeName="text-buffer" to="SGD" />
           </use>
           <use id="from-1" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="ARS" />
-          </use>
-          <use id="from-2" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="AUD" />
-          </use>
-          <use id="from-3" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BGN" />
-          </use>
-          <use id="from-4" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BHD" />
-          </use>
-          <use id="from-5" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BRL" />
-          </use>
-          <use id="from-6" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CAD" />
-          </use>
-          <use id="from-7" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CHF" />
-          </use>
-          <use id="from-8" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CLP" />
-          </use>
-          <use id="from-9" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CNY" />
-          </use>
-          <use id="from-10" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="COP" />
-          </use>
-          <use id="from-11" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CZK" />
-          </use>
-          <use id="from-12" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="DKK" />
-          </use>
-          <use id="from-13" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="EUR" />
-          </use>
-          <use id="from-14" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="GBP" />
-          </use>
-          <use id="from-15" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="HKD" />
-          </use>
-          <use id="from-16" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="HUF" />
-          </use>
-          <use id="from-17" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="IDR" />
-          </use>
-          <use id="from-18" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="ILS" />
-          </use>
-          <use id="from-19" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="INR" />
-          </use>
-          <use id="from-20" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="JPY" />
-          </use>
-          <use id="from-21" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="KRW" />
-          </use>
-          <use id="from-22" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="MXN" />
-          </use>
-          <use id="from-23" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="MYR" />
           </use>
+          <use id="from-2" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="AED" />
+          </use>
+          <use id="from-3" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="ARS" />
+          </use>
+          <use id="from-4" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="AUD" />
+          </use>
+          <use id="from-5" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BGN" />
+          </use>
+          <use id="from-6" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BHD" />
+          </use>
+          <use id="from-7" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BRL" />
+          </use>
+          <use id="from-8" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CAD" />
+          </use>
+          <use id="from-9" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CHF" />
+          </use>
+          <use id="from-10" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CLP" />
+          </use>
+          <use id="from-11" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CNY" />
+          </use>
+          <use id="from-12" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="COP" />
+          </use>
+          <use id="from-13" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CZK" />
+          </use>
+          <use id="from-14" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="DKK" />
+          </use>
+          <use id="from-15" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="EUR" />
+          </use>
+          <use id="from-16" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="GBP" />
+          </use>
+          <use id="from-17" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="HKD" />
+          </use>
+          <use id="from-18" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="HUF" />
+          </use>
+          <use id="from-19" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="IDR" />
+          </use>
+          <use id="from-20" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="ILS" />
+          </use>
+          <use id="from-21" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="INR" />
+          </use>
+          <use id="from-22" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="JPY" />
+          </use>
+          <use id="from-23" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="KRW" />
+          </use>
           <use id="from-24" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="NOK" />
+              <set href="value/text" attributeName="text-buffer" to="MXN" />
           </use>
           <use id="from-25" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="NZD" />
+              <set href="value/text" attributeName="text-buffer" to="NOK" />
           </use>
           <use id="from-26" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="PEN" />
+              <set href="value/text" attributeName="text-buffer" to="NZD" />
           </use>
           <use id="from-27" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="PHP" />
+              <set href="value/text" attributeName="text-buffer" to="PEN" />
           </use>
           <use id="from-28" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="PLN" />
+              <set href="value/text" attributeName="text-buffer" to="PHP" />
           </use>
           <use id="from-29" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="RON" />
+              <set href="value/text" attributeName="text-buffer" to="PLN" />
           </use>
           <use id="from-30" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="RUB" />
+              <set href="value/text" attributeName="text-buffer" to="RON" />
           </use>
           <use id="from-31" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="SAR" />
+              <set href="value/text" attributeName="text-buffer" to="RUB" />
           </use>
           <use id="from-32" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="SEK" />
+              <set href="value/text" attributeName="text-buffer" to="SAR" />
           </use>
           <use id="from-33" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="SGD" />
+              <set href="value/text" attributeName="text-buffer" to="SEK" />
           </use>
           <use id="from-34" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="THB" />
@@ -150,121 +151,120 @@
       </use>
 
       <use id="tumbler-to" href="#tumblerview">
-          <use id="from-0" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="AED" />
-          </use>
-          <use id="from-1" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="ARS" />
-          </use>
-          <use id="from-2" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="AUD" />
-          </use>
-          <use id="from-3" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BGN" />
-          </use>
-          <use id="from-4" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BHD" />
-          </use>
-          <use id="from-5" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="BRL" />
-          </use>
-          <use id="from-6" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CAD" />
-          </use>
-          <use id="from-7" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CHF" />
-          </use>
-          <use id="from-8" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CLP" />
-          </use>
-          <use id="from-9" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CNY" />
-          </use>
-          <use id="from-10" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="COP" />
-          </use>
-          <use id="from-11" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="CZK" />
-          </use>
-          <use id="from-12" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="DKK" />
-          </use>
-          <use id="from-13" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="EUR" />
-          </use>
-          <use id="from-14" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="GBP" />
-          </use>
-          <use id="from-15" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="HKD" />
-          </use>
-          <use id="from-16" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="HUF" />
-          </use>
-          <use id="from-17" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="IDR" />
-          </use>
-          <use id="from-18" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="ILS" />
-          </use>
-          <use id="from-19" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="INR" />
-          </use>
-          <use id="from-20" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="JPY" />
-          </use>
-          <use id="from-21" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="KRW" />
-          </use>
-          <use id="from-22" href="#tumbler-item">
-              <set href="value/text" attributeName="text-buffer" to="MXN" />
-          </use>
-          <use id="from-23" href="#tumbler-item">
+          <use id="to-0" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="MYR" />
           </use>
-          <use id="from-24" href="#tumbler-item">
+          <use id="to-1" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="AED" />
+          </use>
+          <use id="to-2" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="ARS" />
+          </use>
+          <use id="to-3" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="AUD" />
+          </use>
+          <use id="to-4" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BGN" />
+          </use>
+          <use id="to-5" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BHD" />
+          </use>
+          <use id="to-6" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="BRL" />
+          </use>
+          <use id="to-7" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CAD" />
+          </use>
+          <use id="to-8" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CHF" />
+          </use>
+          <use id="to-9" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CLP" />
+          </use>
+          <use id="to-10" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CNY" />
+          </use>
+          <use id="to-11" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="COP" />
+          </use>
+          <use id="to-12" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="CZK" />
+          </use>
+          <use id="to-13" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="DKK" />
+          </use>
+          <use id="to-14" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="EUR" />
+          </use>
+          <use id="to-15" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="GBP" />
+          </use>
+          <use id="to-16" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="HKD" />
+          </use>
+          <use id="to-17" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="HUF" />
+          </use>
+          <use id="to-18" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="IDR" />
+          </use>
+          <use id="to-19" href="#tumbler-item"> <set href="value/text" attributeName="text-buffer" to="ILS" />
+          </use>
+          <use id="to-20" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="INR" />
+          </use>
+          <use id="to-21" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="JPY" />
+          </use>
+          <use id="to-22" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="KRW" />
+          </use>
+          <use id="to-23" href="#tumbler-item">
+              <set href="value/text" attributeName="text-buffer" to="MXN" />
+          </use>
+          <use id="to-24" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="NOK" />
           </use>
-          <use id="from-25" href="#tumbler-item">
+          <use id="to-25" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="NZD" />
           </use>
-          <use id="from-26" href="#tumbler-item">
+          <use id="to-26" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="PEN" />
           </use>
-          <use id="from-27" href="#tumbler-item">
+          <use id="to-27" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="PHP" />
           </use>
-          <use id="from-28" href="#tumbler-item">
+          <use id="to-28" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="PLN" />
           </use>
-          <use id="from-29" href="#tumbler-item">
+          <use id="to-29" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="RON" />
           </use>
-          <use id="from-30" href="#tumbler-item">
+          <use id="to-30" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="RUB" />
           </use>
-          <use id="from-31" href="#tumbler-item">
+          <use id="to-31" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="SAR" />
           </use>
-          <use id="from-32" href="#tumbler-item">
+          <use id="to-32" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="SEK" />
           </use>
-          <use id="from-33" href="#tumbler-item">
+          <use id="to-33" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="SGD" />
           </use>
-          <use id="from-34" href="#tumbler-item">
+          <use id="to-34" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="THB" />
           </use>
-          <use id="from-35" href="#tumbler-item">
+          <use id="to-35" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="TRY" />
           </use>
-          <use id="from-36" href="#tumbler-item">
+          <use id="to-36" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="TWD" />
           </use>
-          <use id="from-37" href="#tumbler-item">
+          <use id="to-37" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="USD" />
           </use>
-          <use id="from-38" href="#tumbler-item">
+          <use id="to-38" href="#tumbler-item">
               <set href="value/text" attributeName="text-buffer" to="ZAR" />
           </use>
       </use>
@@ -274,8 +274,8 @@
   
   <svg id="numpad-view" display="none">
     <section x="0" y="10%" width="100%" height="16">
-      <text id="numbers" x="70%" y="15" width="80%" />
-      <use id="back" href="#icon-button" class="small-button application-fill back-button" />
+      <text id="numbers" x="50%" y="15" width="80%" text-anchor="middle" />
+      <use id="back" href="#icon-button" x="70%" y="-25" class="medium-button muted-fill back-button" />
     </section>
     <section x="13%" y="$" width="95%" height="90%-36">
       <section class="row" x="0" y="20%">

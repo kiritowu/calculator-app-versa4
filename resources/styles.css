@@ -30,10 +30,6 @@ text {
   text-length: 32;
 }
 
-#back {
-  x: 80%;
-  y: -10;
-}
 
 .back-button #image {
   href: "icons/left-arrow.png";
