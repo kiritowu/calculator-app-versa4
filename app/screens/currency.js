@@ -69,12 +69,14 @@ export class ConvCurrencyScreen extends View {
         this.screenState = "index-view"
         this.render()
     }
+    symbolHandlers = {};  // HashMap to store event listeners to be removed on unmount
     appendSymbolHandler = (id) => {
         const handler = () => {
             console.log("click " + id);
             // Append number symbol
             this.numpadNumberEl.text += id2Symbol[id];
         }
+        this.symbolHandlers[id] = handler;
         return handler
     }
     equalBtnHandler = () => {
@@ -148,7 +150,7 @@ export class ConvCurrencyScreen extends View {
         // Numpad View
         Object.keys(id2Symbol).forEach(id => {
             try {
-                $(`#${id}`).removeEventListener("click", this.appendSymbolHandler(id));
+                $(`#${id}`).removeEventListener("click", this.symbolHandlers[id]);
             } catch (error) {
                 console.log(`${id} is not found`);
             }
