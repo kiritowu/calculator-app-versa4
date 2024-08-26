@@ -14,6 +14,7 @@ export class ConvCurrencyScreen extends View {
     firstNumpadTap = true;  // Replace fromNumber completely on first tap
 
     // Conversion related variables
+    rates = {}  // fromISO: { toISO: 1.00, ... }
     fromNumber = 1.00;
     fromCurrency = "SGD";
     toNumber = 1.00;
@@ -117,7 +118,7 @@ export class ConvCurrencyScreen extends View {
         console.log(`From ${selectedISO} of index ${selectedIndex}`);
     }
 
-    // Functions to fetch currency API
+    // Functions to fetch and convert currency API
     handleMessagingOpen = () => {
         console.log("Ready to send or receive messages");
         if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
@@ -131,10 +132,20 @@ export class ConvCurrencyScreen extends View {
         console.log("Receive event data");
         if (evt.data) {
             console.log(`The temperature is: ${JSON.stringify(evt.data)}`);
+            const originISO = Object.keys(evt.data)[0];
+            this.rates[originISO] = evt.data[originISO];
         }
     }
     handleMessagingError = (err) => {
         console.error(`Connection error: ${err.code} - ${err.message}`);
+    }
+    convert = () => {
+        let rate;
+        const rates = this.rates[this.fromCurrency];
+        if (rates !== undefined) {
+            rate = rates[this.toCurrency];
+        }
+        this.toNumber = this.fromNumber * rate ? rate : 1.00;
     }
 
     // Lifecycle hook executed on `view.mount()`.
@@ -201,6 +212,8 @@ export class ConvCurrencyScreen extends View {
     // Custom UI update logic, executed on `view.render()`.
     onRender() {
         if (this.screenState == "index-view") {
+            // Compute exchange rate
+            this.convert();
             this.fromNumberEl.text = this.fromNumber;
             this.fromCurrencyEl.text = this.fromCurrency;
             this.toCurrencyEl.text = this.toCurrency;
