@@ -22,6 +22,7 @@ export class CalculatorScreen extends View {
 
     numberEl = $('#numbers');
     stage = undefined;
+    symbolHandlers = {};  // HashMap to store event listeners to be removed on unmount
 
     appendSymbolHandler = (id) => {
         console.log("appending " + id);
@@ -39,6 +40,7 @@ export class CalculatorScreen extends View {
             // Append number symbol
             this.numberEl.text += id2Symbol[id];
         }
+        this.symbolHandlers[id] = handler;
         return handler
     }
 
@@ -89,7 +91,7 @@ export class CalculatorScreen extends View {
         // Unmount event listeners
         Object.keys(id2Symbol).forEach(id => {
             // TODO: vibrate and change opacity on mousedown
-            $(`#${id}`).removeEventListener("click", this.appendSymbolHandler(id));
+            $(`#${id}`).removeEventListener("click", this.symbolHandlers[id]);
         })
         $("#equal").removeEventListener("click", this.equalHandler);
         $("#back").removeEventListener("click", this.backspaceHandler);
