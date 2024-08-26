@@ -8,7 +8,9 @@
     "appDisplayName": "Calculator",
     "iconFile": "resources/icons/icon.png",
     "wipeColor": "#8bc34a",
-    "requestedPermissions": [],
+    "requestedPermissions": [
+      "access_internet"
+    ],
     "buildTargets": [
       "hera",
       "rhea"

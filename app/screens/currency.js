@@ -10,6 +10,7 @@ export class ConvCurrencyScreen extends View {
     el = $();
 
     screenState = "index-view";  // index-view | currency-view | numpad-view
+    firstNumpadTap = true;  // Replace fromNumber completely on first tap
 
     // Conversion related variables
     fromNumber = 1.00;
@@ -73,8 +74,14 @@ export class ConvCurrencyScreen extends View {
     appendSymbolHandler = (id) => {
         const handler = () => {
             console.log("click " + id);
-            // Append number symbol
-            this.numpadNumberEl.text += id2Symbol[id];
+            if (this.firstNumpadTap) {
+                // When first tap, replace whole number instead of append
+                this.firstNumpadTap = false;
+                this.numpadNumberEl.text = id2Symbol[id];
+            } else {
+                // Append number symbol
+                this.numpadNumberEl.text += id2Symbol[id];
+            }
         }
         this.symbolHandlers[id] = handler;
         return handler
@@ -176,6 +183,7 @@ export class ConvCurrencyScreen extends View {
             this.numpadSvg.style.display = "none";
         } else if (this.screenState == "numpad-view") {
             this.numpadNumberEl.text = this.fromNumber;
+            this.firstNumpadTap = true;
 
             this.indexSvg.style.display = "none";
             this.currencySvg.style.display = "none";
