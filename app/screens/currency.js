@@ -1,3 +1,4 @@
+import * as messaging from "messaging";
 import { Application, View, $at } from '../view'
 import { id2Symbol } from "../enums";
 
@@ -116,8 +117,34 @@ export class ConvCurrencyScreen extends View {
         console.log(`From ${selectedISO} of index ${selectedIndex}`);
     }
 
+    // Functions to fetch currency API
+    handleMessagingOpen = () => {
+        console.log("Ready to send or receive messages");
+        if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
+            // Send a command to the companion
+            messaging.peerSocket.send({
+                command: "exchangeRate"
+            });
+        }
+    }
+    handleMessagingMessage = (evt) => {
+        console.log("Receive event data");
+        if (evt.data) {
+            console.log(`The temperature is: ${JSON.stringify(evt.data)}`);
+        }
+    }
+    handleMessagingError = (err) => {
+        console.error(`Connection error: ${err.code} - ${err.message}`);
+    }
+
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
+        // Messaging socket
+        messaging.peerSocket.addEventListener("open", this.handleMessagingOpen);
+        messaging.peerSocket.addEventListener("message", this.handleMessagingMessage);
+        messaging.peerSocket.addEventListener("error", this.handleMessagingError);
+        this.handleMessagingOpen();
+
         // Index View
         this.menuBtn.addEventListener("click", this.menuBtnHandler);
         this.settingBtn.addEventListener("click", this.settingBtnHandler);
@@ -143,6 +170,11 @@ export class ConvCurrencyScreen extends View {
 
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
+        // Messaging socket
+        messaging.peerSocket.removeEventListener("open", this.handleMessagingOpen);
+        messaging.peerSocket.removeEventListener("message", this.handleMessagingMessage);
+        messaging.peerSocket.removeEventListener("error", this.handleMessagingError);
+
         // Index View
         this.menuBtn.removeEventListener("click", this.menuBtnHandler);
         this.settingBtn.removeEventListener("click", this.settingBtnHandler);
