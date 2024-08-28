@@ -1,4 +1,6 @@
 import * as messaging from "messaging";
+import * as fs from "fs";
+import { inbox } from "file-transfer"
 import { Application, View, $at } from '../view'
 import { id2Symbol } from "../enums";
 
@@ -32,6 +34,7 @@ export class ConvCurrencyScreen extends View {
     toCurrencyEl = $("#to-currency");
     toNumberEl = $("#to-number");
     numpadNumberEl = $("#numbers");
+    statusTextEl = $("#status");
 
     // Buttons
     menuBtn = $("#menu-btn");
@@ -64,8 +67,8 @@ export class ConvCurrencyScreen extends View {
     resetBtnHandler = () => {
         // Reset number and rerender element
         this.fromNumber = 1.00;
-        this.toNumber = 1.00;
         this.render();
+        this.requestExchangeRate();
     }
     currencySelectBtnHandler = () => {
         // Switch to index view state
@@ -119,21 +122,34 @@ export class ConvCurrencyScreen extends View {
     }
 
     // Functions to fetch and convert currency API
-    handleMessagingOpen = () => {
-        console.log("Ready to send or receive messages");
+    readExchangeRate = () => {
+        // Read cached exchange-rate.json if available
+        if (fs.existsSync("/private/data/exchange-rate.json")) {
+            console.log(`/private/data/exchange-rate.json is available`);
+            try {
+                let json_object = fs.readFileSync("exchange-rate.json", "json");
+                console.log("JSON" + JSON.stringify(json_object));
+                this.rates = json_object;
+                this.statusTextEl.text = "Last Updated: 123";
+                return true;
+            } catch (e) {
+                this.statusTextEl.text = "Unknown Error reading exchange rate."
+                console.error(e);
+            }
+        }
+        return false;
+    }
+    requestExchangeRate = () => {
         if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
             // Send a command to the companion
+            console.log("Exchange rate requested");
             messaging.peerSocket.send({
                 command: "exchangeRate"
             });
-        }
-    }
-    handleMessagingMessage = (evt) => {
-        console.log("Receive event data");
-        if (evt.data) {
-            console.log(`The temperature is: ${JSON.stringify(evt.data)}`);
-            const originISO = Object.keys(evt.data)[0];
-            this.rates[originISO] = evt.data[originISO];
+            this.statusTextEl.text = "Retrieving exchange rate...";
+        } else {
+            this.statusTextEl.text = "Ensure Fitbit App is ready with internet.";
+            console.error("Messaging failed as socket is not open")
         }
     }
     handleMessagingError = (err) => {
@@ -147,14 +163,27 @@ export class ConvCurrencyScreen extends View {
         }
         this.toNumber = this.fromNumber * rate ? rate : 1.00;
     }
+    processAllFiles = async () => {
+        console.log("New File received");
+        let fileName;
+        while (fileName = inbox.nextFile()) {
+            if (fileName === "exchange-rate.json") {
+                this.readExchangeRate();
+            }
+        }
+    }
 
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
         // Messaging socket
-        messaging.peerSocket.addEventListener("open", this.handleMessagingOpen);
-        messaging.peerSocket.addEventListener("message", this.handleMessagingMessage);
+        // Read exchange rate from cache if available
+        if (!this.readExchangeRate()) {
+            // Else retrieve latest exchange rate
+            this.statusTextEl.text = "No Cached Exchange Rate. Downloading...";
+            this.requestExchangeRate();
+        }
+        inbox.addEventListener("newfile", this.processAllFiles);
         messaging.peerSocket.addEventListener("error", this.handleMessagingError);
-        this.handleMessagingOpen();
 
         // Index View
         this.menuBtn.addEventListener("click", this.menuBtnHandler);
