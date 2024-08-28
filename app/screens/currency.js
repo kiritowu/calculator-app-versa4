@@ -128,15 +128,15 @@ export class ConvCurrencyScreen extends View {
             console.log(`/private/data/exchange-rate.json is available`);
             try {
                 let json_object = fs.readFileSync("exchange-rate.json", "json");
-                console.log("JSON" + JSON.stringify(json_object));
                 this.rates = json_object;
-                this.statusTextEl.text = "Last Updated: 123";
+                this.statusTextEl.text = `Last Updated: ${new Date().toLocaleDateString()}`;
                 return true;
             } catch (e) {
                 this.statusTextEl.text = "Unknown Error reading exchange rate."
                 console.error(e);
             }
         }
+        console.log("Exchange rate file is not found");
         return false;
     }
     requestExchangeRate = () => {
@@ -156,12 +156,14 @@ export class ConvCurrencyScreen extends View {
         console.error(`Connection error: ${err.code} - ${err.message}`);
     }
     convert = () => {
+        console.log(`Converting ${this.fromNumber} from ${this.fromCurrency} to ${this.toCurrency}`)
         let rate;
         const rates = this.rates[this.fromCurrency];
         if (rates !== undefined) {
             rate = rates[this.toCurrency];
         }
-        this.toNumber = this.fromNumber * rate ? rate : 1.00;
+        this.toNumber = this.fromNumber * (rate ? rate : 1.00);
+        console.log(`Answer: ${this.toNumber}`);
     }
     processAllFiles = async () => {
         console.log("New File received");
@@ -179,8 +181,8 @@ export class ConvCurrencyScreen extends View {
         // Read exchange rate from cache if available
         if (!this.readExchangeRate()) {
             // Else retrieve latest exchange rate
-            this.statusTextEl.text = "No Cached Exchange Rate. Downloading...";
-            this.requestExchangeRate();
+            this.statusTextEl.text = "No Cached Exchange Rate Found. Press Reset.";
+            // this.requestExchangeRate();
         }
         inbox.addEventListener("newfile", this.processAllFiles);
         messaging.peerSocket.addEventListener("error", this.handleMessagingError);
@@ -211,6 +213,7 @@ export class ConvCurrencyScreen extends View {
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
         // Messaging socket
+        this.rates = {}
         messaging.peerSocket.removeEventListener("open", this.handleMessagingOpen);
         messaging.peerSocket.removeEventListener("message", this.handleMessagingMessage);
         messaging.peerSocket.removeEventListener("error", this.handleMessagingError);

@@ -11,7 +11,7 @@
         <text id="to-number" y="$+15" x="80%" font-size="58" text-anchor="end" text-length="10" fill="inherit">1.00</text>
       </section>
     </section>
-    <text id="status" x="10%" y="70%" width="100%" class="application-fill" font-size="20" text-anchor="start" text-length="64" />
+    <text id="status" x="10%" y="72%" width="100%" class="application-fill" font-size="20" text-anchor="start" text-length="64" />
     <section x="10%" y="75%" class="row">
       <use id="setting-btn" x="0" y="0" width="20%" href="#small-button-rect" class="secondary-fill">
         <set href="#image" attributeName="href" to="icons/setting-svgrepo-com.png" />
