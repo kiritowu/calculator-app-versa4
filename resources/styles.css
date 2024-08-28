@@ -30,17 +30,20 @@ text {
   text-length: 32;
 }
 
-#back {
-  x: 80%;
-  y: -10;
-}
-
 .back-button #image {
   href: "icons/left-arrow.png";
 }
 
+.calculator-button #image {
+  href: "icons/calculator-svgrepo-com.png";
+}
+
 .currency-button #image {
   href: "icons/currency.png";
+}
+
+.menu-button #image {
+  href: "icons/menu-svgrepo-com.png";
 }
 
 .row {
@@ -58,4 +61,12 @@ text {
   text-length: 2;
 }
 
-
+#tumbler-from {
+  x: 14;   y: 120; width: 120; height: 100%; }
+#tumbler-to {
+  x: 188;  y: 120; width: 120; height: 100%; }
+#tumbler-from #value text {
+  x: 100%;
+  text-anchor: end;
+}
+.tumbler-colon              { x: 141;  y: 0; width: 12; }
