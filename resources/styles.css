@@ -14,22 +14,36 @@
   fill: "#313131";
 }
 
-#numbers {
+.muted-fill {
+  fill: "#111111";
+}
+
+text {
   fill: white;
-  font-size: 36;
   font-family: System-Regular;
+}
+
+#numbers {
+  font-size: 36;
   font-weight: bold;
   text-anchor: end;
   text-length: 32;
 }
 
-#back {
-  x: 80%;
-  y: -10;
+.back-button #image {
+  href: "icons/left-arrow.png";
 }
 
-.back-button #image {
-  href: "left-arrow.png";
+.calculator-button #image {
+  href: "icons/calculator-svgrepo-com.png";
+}
+
+.currency-button #image {
+  href: "icons/currency.png";
+}
+
+.menu-button #image {
+  href: "icons/menu-svgrepo-com.png";
 }
 
 .row {
@@ -44,8 +58,15 @@
 
 .btn #text {
   font-size: 16;
-  font-family: System-Regular;
   text-length: 2;
 }
 
-
+#tumbler-from {
+  x: 14;   y: 120; width: 120; height: 100%; }
+#tumbler-to {
+  x: 188;  y: 120; width: 120; height: 100%; }
+#tumbler-from #value text {
+  x: 100%;
+  text-anchor: end;
+}
+.tumbler-colon              { x: 141;  y: 0; width: 12; }
