@@ -73,9 +73,6 @@ function returnExchangeRateFile(buffer) {
 	});
 }
 
-function currencyIndex(name) {
-	return supportedCurrency.indexOf(name)
-}
 
 function sendSettingData(key, value) {
 	// If we have a MessageSocket, send the data to the device
@@ -90,19 +87,12 @@ if (companion.launchReasons.settingsChanged) {
 	APIKEY = settingsStorage.getItem("apiKey")
 	// Send the value of the setting
 	console.log("Sending setting data on launch");
-	sendSettingData("currencyFromIndex",
-		settingsStorage.getItem("currencyFrom").selected[0]);
-	sendSettingData("currencyToIndex",
-		settingsStorage.getItem("currencyTo").selected[0]);
 }
 
 // Listen for the events
 settingsStorage.addEventListener("change", (evt) => {
 	if (evt.key === "apiKey") {
 		APIKEY = evt.newValue;
-	} else {
-		console.log("Sending setting data on change");
-		sendSettingData(evt.key + "Index", JSON.parse(evt.newValue).selected[0]);
 	}
 });
 
