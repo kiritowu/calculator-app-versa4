@@ -111,6 +111,8 @@ export class ConvCurrencyScreen extends View {
         let selectedItem = this.fromTumbler.getElementById(`from-${selectedIndex}`);
         let selectedISO = selectedItem.getElementById("text").text;
         this.fromCurrency = selectedISO;
+        // Cache currency choice
+        fs.writeFileSync("fromCurrency.json", { key: selectedISO, value: selectedIndex }, "json");
         console.log(`From ${selectedISO} of index ${selectedIndex}`);
     }
     toTumblerHanlder = () => {
@@ -118,6 +120,8 @@ export class ConvCurrencyScreen extends View {
         let selectedItem = this.toTumbler.getElementById(`to-${selectedIndex}`);
         let selectedISO = selectedItem.getElementById("text").text;
         this.toCurrency = selectedISO;
+        // Cache currency choice
+        fs.writeFileSync("toCurrency.json", { key: selectedISO, value: selectedIndex }, "json");
         console.log(`From ${selectedISO} of index ${selectedIndex}`);
     }
 
@@ -148,7 +152,7 @@ export class ConvCurrencyScreen extends View {
             });
             this.statusTextEl.text = "Retrieving exchange rate...";
         } else {
-            this.statusTextEl.text = "Ensure Fitbit App is ready with internet.";
+            this.statusTextEl.text = "Ensure Fitbit App is ready.";
             console.error("Messaging failed as socket is not open")
         }
     }
@@ -174,6 +178,17 @@ export class ConvCurrencyScreen extends View {
             }
         }
     }
+    handleMessagingMessage = (evt) => {
+        if (evt && evt.data) {
+            switch (evt.data.key) {
+                case "error":
+                    this.statusTextEl.text = evt.data.value;
+                    break
+                default:
+                    console.error(`Unknown key ${evt.data.key} and value: ${evt.data.value} pair`)
+            }
+        }
+    }
 
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
@@ -181,10 +196,11 @@ export class ConvCurrencyScreen extends View {
         // Read exchange rate from cache if available
         if (!this.readExchangeRate()) {
             // Else retrieve latest exchange rate
-            this.statusTextEl.text = "No Cached Exchange Rate Found. Press Reset.";
+            this.statusTextEl.text = "Reset to retrieve currency data.";
             // this.requestExchangeRate();
         }
         inbox.addEventListener("newfile", this.processAllFiles);
+        messaging.peerSocket.addEventListener("message", this.handleMessagingMessage);
         messaging.peerSocket.addEventListener("error", this.handleMessagingError);
 
         // Index View
@@ -198,6 +214,20 @@ export class ConvCurrencyScreen extends View {
         this.fromTumbler.addEventListener("select", this.fromTumblerHanlder);
         this.toTumbler.addEventListener("select", this.toTumblerHanlder);
 
+        // Read cached value
+        if (fs.existsSync("fromCurrency.json")) {
+            let cached = fs.readFileSync("fromCurrency.json", "json");
+            console.log(JSON.stringify(cached))
+            this.fromCurrency = cached.key;
+            this.fromTumbler.value = cached.value;
+        }
+        if (fs.existsSync("toCurrency.json")) {
+            let cached = fs.readFileSync("toCurrency.json", "json");
+            console.log(JSON.stringify(cached))
+            this.toCurrency = cached.key;
+            this.toTumbler.value = cached.value;
+        }
+
         // Numpad View
         Object.keys(id2Symbol).forEach(id => {
             try {
@@ -208,13 +238,15 @@ export class ConvCurrencyScreen extends View {
         })
         this.equalBtn.addEventListener("click", this.equalBtnHandler);
         this.backBtn.addEventListener("click", this.backBtnHandler);
+
+        this.render();
     }
 
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
         // Messaging socket
         this.rates = {}
-        messaging.peerSocket.removeEventListener("open", this.handleMessagingOpen);
+        inbox.removeEventListener("newfile", this.processAllFiles);
         messaging.peerSocket.removeEventListener("message", this.handleMessagingMessage);
         messaging.peerSocket.removeEventListener("error", this.handleMessagingError);
 
