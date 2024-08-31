@@ -10,7 +10,7 @@ import * as messaging from "messaging";
 console.log("Companion code started");
 
 // Get the value of the setting
-let APIKEY = settingsStorage.getItem("apiKey");
+let APIKEY = JSON.parse(settingsStorage.getItem("apiKey")).name;
 const ENDPOINT = `https://v6.exchangerate-api.com/v6`
 const destFilename = "exchange-rate.json";
 const supportedCurrency = [
@@ -84,7 +84,7 @@ function sendSettingData(key, value) {
 }
 // Settings were changed while the companion was not running
 if (companion.launchReasons.settingsChanged) {
-	APIKEY = settingsStorage.getItem("apiKey")
+	APIKEY = JSON.parse(settingsStorage.getItem("apiKey")).name;
 	// Send the value of the setting
 	console.log("Sending setting data on launch");
 }
