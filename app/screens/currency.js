@@ -148,7 +148,7 @@ export class ConvCurrencyScreen extends View {
             });
             this.statusTextEl.text = "Retrieving exchange rate...";
         } else {
-            this.statusTextEl.text = "Ensure Fitbit App is ready with internet.";
+            this.statusTextEl.text = "Ensure Fitbit App is ready.";
             console.error("Messaging failed as socket is not open")
         }
     }
@@ -174,6 +174,26 @@ export class ConvCurrencyScreen extends View {
             }
         }
     }
+    handleMessagingMessage = (evt) => {
+        if (evt && evt.data) {
+            switch (evt.data.key) {
+                case "currencyFromIndex":
+                    console.log(`Convert fromTumbler to ${evt.data.value}`)
+                    this.fromTumbler.value = parseInt(evt.data.value);
+                    break
+                case "currencyToIndex":
+                    console.log(`Convert toTumbler to ${evt.data.value}`)
+                    this.toTumbler.value = parseInt(evt.data.value);
+                    break
+                case "error":
+                    this.statusTextEl.text = evt.data.value;
+                    break
+                default:
+                    console.error(`Unknown key ${evt.data.key} and value: ${evt.data.value} pair`)
+            }
+            this.render()
+        }
+    }
 
     // Lifecycle hook executed on `view.mount()`.
     onMount() {
@@ -181,10 +201,11 @@ export class ConvCurrencyScreen extends View {
         // Read exchange rate from cache if available
         if (!this.readExchangeRate()) {
             // Else retrieve latest exchange rate
-            this.statusTextEl.text = "No Cached Exchange Rate Found. Press Reset.";
+            this.statusTextEl.text = "Reset to retrieve currency data.";
             // this.requestExchangeRate();
         }
         inbox.addEventListener("newfile", this.processAllFiles);
+        messaging.peerSocket.addEventListener("message", this.handleMessagingMessage);
         messaging.peerSocket.addEventListener("error", this.handleMessagingError);
 
         // Index View
@@ -197,6 +218,8 @@ export class ConvCurrencyScreen extends View {
         this.currencySelectBtn.addEventListener("click", this.currencySelectBtnHandler);
         this.fromTumbler.addEventListener("select", this.fromTumblerHanlder);
         this.toTumbler.addEventListener("select", this.toTumblerHanlder);
+        this.fromTumbler.value = 0; // Default to SGD
+        this.toTumbler.value = 1; // Default to MYR
 
         // Numpad View
         Object.keys(id2Symbol).forEach(id => {
@@ -208,13 +231,14 @@ export class ConvCurrencyScreen extends View {
         })
         this.equalBtn.addEventListener("click", this.equalBtnHandler);
         this.backBtn.addEventListener("click", this.backBtnHandler);
+
     }
 
     // Lifecycle hook executed on `view.unmount()`.
     onUnmount() {
         // Messaging socket
         this.rates = {}
-        messaging.peerSocket.removeEventListener("open", this.handleMessagingOpen);
+        inbox.removeEventListener("newfile", this.processAllFiles);
         messaging.peerSocket.removeEventListener("message", this.handleMessagingMessage);
         messaging.peerSocket.removeEventListener("error", this.handleMessagingError);
 
