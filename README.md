@@ -1,29 +1,29 @@
 # Fitbit Calculator App for Versa 4 
 
-A simple Calculator app is built based on an [unofficial approach](https://github.com/cmengler/fitbit-app-versa4) for sideloading a 3rd-party application to Fitbit Versa 4 and Sense 2 devices.
+A simple Calculator and currency converter app is built based on an [unofficial approach](https://github.com/cmengler/fitbit-app-versa4) for sideloading a 3rd-party application to Fitbit Versa 4 and Sense 2 devices.
 
 This app is built using [Ionic Views framwork](https://github.com/gaperton/ionic-views) by [gaperton](https://twitter.com/gaperton).
 
 ## Quick Start
 
-To summarise in four steps:
+To summarise in 3 steps:
 
-- [Build the app](#build-the-app)
+- [Install dependencies](#install-dependencies)
 - [Prepare the bridge](#prepare-the-bridge)
 - [Connect the devices](#connect-the-devices)
 - [Install the app](#install-the-app)
 
-### Build the app
+### Install dependencies
 
 ```sh
-cd app && \
-yarn install && \
-yarn build
+yarn install
 ```
 
 ### Prepare the bridge
 
-Open Fitbit app, access the **Developer Menu**, toggle on **Developer Bridge** and wait for the "Waiting for Studio" status.
+Login to [Gallery Admin](https://gam.fitbit.com/), and accept the Fitbit Platform Terms of Service.
+
+Open Fitbit app, access the **Developer Menu** from your device page, toggle on **Developer Bridge** and wait for the "Waiting for Studio" status.
 
 On the Versa 4/Sense 2, connect the device to charger, goto **Settings** and navigate to **Developer bridge**, toggle **USB debugging** on.
 
