@@ -4,6 +4,11 @@ A simple Calculator and currency converter app is built based on an [unofficial 
 
 This app is built using [Ionic Views framwork](https://github.com/gaperton/ionic-views) by [gaperton](https://twitter.com/gaperton).
 
+### Screenshots
+| ![calculator-screen](screenshots/calculator-screen.png) Calculator Interface| ![menu-screen](screenshots/menu-screen.png) Menu Interface| ![currency-screen](screenshots/currency-screen.png) Currency Convertor Interface |
+| --- | --- | --- |
+| ![currency-selector-screen](screenshots/currency-selector-screen.png) Currency Selector| ![number-selector-screen](screenshots/number-selector-screen.png) Number Pad| ![setting-screen](screenshots/setting-screen.png) Setting Page |
+
 ## Quick Start
 
 To summarise in 3 steps:
