@@ -1,6 +1,6 @@
 # Fitbit Calculator App for Versa 4 
 
-A simple Calculator and currency converter app is built based on an [unofficial approach](https://github.com/cmengler/fitbit-app-versa4) for sideloading a 3rd-party application to Fitbit Versa 4 and Sense 2 devices.
+A simple Calculator and currency converter app based on an [unofficial approach](https://github.com/cmengler/fitbit-app-versa4) for sideloading a 3rd-party application to Fitbit Versa 4 and Sense 2 devices.
 
 This app is built using [Ionic Views framwork](https://github.com/gaperton/ionic-views) by [gaperton](https://twitter.com/gaperton).
 
