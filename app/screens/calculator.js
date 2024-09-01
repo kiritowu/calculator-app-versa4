@@ -32,7 +32,11 @@ export class CalculatorScreen extends View {
                 // Fallback to use for of since includes is not available
                 if (id === opsMethod) {
                     // Stage numeric operation
-                    this.stage = { num: parseFloat(this.numberEl.text) ?? 0, ops: opsMethods[id], nextStage: this.stage };
+                    this.stage = {
+                        num: this.numberEl.text ? parseFloat(this.numberEl.text) : 0,
+                        ops: opsMethods[id],
+                        nextStage: this.stage
+                    };
                     this.numberEl.text = id2Symbol[id];
                     return;
                 }
