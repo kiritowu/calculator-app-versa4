@@ -11,7 +11,7 @@ This app is built using [Ionic Views framwork](https://github.com/gaperton/ionic
 
 ## Quick Start
 
-To summarise in 3 steps:
+To summarise in 4 steps:
 
 - [Install dependencies](#install-dependencies)
 - [Prepare the bridge](#prepare-the-bridge)
